@@ -1,0 +1,222 @@
+<?php
+
+namespace JournaleBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+
+/**
+ * Journale
+ *
+ * @ORM\Table(name="journale")
+ * @ORM\Entity(repositoryClass="JournaleBundle\Repository\JournaleRepository")
+ */
+class Journale
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="animal", type="string", length=255)
+     */
+    private $animal;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="nbchasse", type="integer")
+     *
+     * @Assert\GreaterThan( value=0 , message="Nombre de chasse superieur à 0")
+     */
+    private $nbchasse;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="lieu", type="string", length=255)
+     *
+     *
+     */
+    private $lieu;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="date", type="date")
+     */
+    private $date;
+
+    /**
+     * @var string
+     *@Assert\NotBlank(message="hello")
+     * @ORM\Column(name="description", type="string", length=255)
+     *
+     *
+     *
+     */
+    private $description;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="idchasseur", type="string", length=255)
+     *
+     *
+     */
+    private $idchasseur;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * ORM\JoinColumn(name="user_id",refrencedColumnName="id")
+     */
+    protected $user;
+
+    /**
+     * @return mixed
+     */
+    public function getUser()
+    {
+        return $this->user;
+    }
+
+    /**
+     * @param mixed $user
+     */
+    public function setUser($user)
+    {
+        $this->user = $user;
+    }
+
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set animal
+     *
+     * @param string $animal
+     *
+     * @return Journale
+     */
+    public function setAnimal($animal)
+    {
+        $this->animal = $animal;
+
+        return $this;
+    }
+
+    /**
+     * Get animal
+     *
+     * @return string
+     */
+    public function getAnimal()
+    {
+        return $this->animal;
+    }
+
+    /**
+     * Set nbchasse
+     *
+     * @param integer $nbchasse
+     *
+     * @return Journale
+     */
+    public function setNbchasse($nbchasse)
+    {
+        $this->nbchasse = $nbchasse;
+
+        return $this;
+    }
+
+    /**
+     * Get nbchasse
+     *
+     * @return int
+     */
+    public function getNbchasse()
+    {
+        return $this->nbchasse;
+    }
+
+    /**
+     * Set lieu
+     *
+     * @param string $lieu
+     *
+     * @return Journale
+     */
+    public function setLieu($lieu)
+    {
+        $this->lieu = $lieu;
+
+        return $this;
+    }
+
+    /**
+     * Get lieu
+     *
+     * @return string
+     */
+    public function getLieu()
+    {
+        return $this->lieu;
+    }
+
+    /**
+     * Set date
+     *
+     * @param \DateTime $date
+     *
+     * @return Journale
+     */
+    public function setDate($date)
+    {
+        $this->date = $date;
+
+        return $this;
+    }
+
+    /**
+     * Get date
+     *
+     * @return \DateTime
+     */
+    public function getDate()
+    {
+        return $this->date;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     *
+     * @return Journale
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+
+}

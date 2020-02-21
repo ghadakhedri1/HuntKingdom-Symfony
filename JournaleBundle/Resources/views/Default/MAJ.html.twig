@@ -1,0 +1,121 @@
+{% extends 'baseCompte.html.twig' %}
+{% block head %}
+    <style>
+        #hello{
+            padding:10px;
+        }
+
+        .c{
+            width: 100%;
+            height: 150px;
+            padding: 50px 20px;
+            border-radius: 20px;
+
+
+        }
+
+        h1{
+            width: 35%;
+            margin-left:auto;
+            margin-right:auto;
+            background:white;
+            border-radius:5px;
+            position:relative;
+            font-family: 'Libre Franklin';
+        }
+        .form{
+            width: 35%;
+            margin-left:auto;
+            margin-right:auto;
+            padding:50px;
+            background:whitesmoke;
+            border-radius:5px;
+            position:relative;
+            font-family: 'Libre Franklin', sans-serif;
+        }
+
+        .form > div {
+            float:left;margin-bottom:30px;
+        }
+        .form > div > p{
+            font-size: 12px;margin-bottom: 3px;
+        }
+        .form > div > input{
+            font-size:12px;letter-spacing:1px;padding:  5px;border: 0;background:  whitesmoke;border-bottom: 1px solid silver;width: 100%;color: gray;
+        }
+
+        .form > p:last-of-type{
+            text-align: center;padding-top: 50px;display:  table;width: 100%;color:white;
+        }
+
+        .form > p:last-of-type > a{
+            cursor:pointer;border:0;
+            padding: 10px 25px;
+            background:  silver;
+            border-radius:  28px;
+            font-size: 12px;
+        }
+
+        .term{
+            padding-top:40px;display: flex;width:  100%;align-items:  center;
+        }
+
+        .term > i{
+            cursor:pointer;width:20px;
+        }
+
+        .term > span{
+            font-size:12px;
+        }
+
+        /* delete */
+        form > a:last-of-type{
+            position:absolute;
+            bottom: 10px;
+            right: 15px;
+            font-size:  10px;
+            letter-spacing:  1px;
+            font-style: italic;
+        }
+    </style>
+{% endblock %}
+
+{% block container %}
+    <div id="hello">
+    <h1>Votre Journale {{ app.user.username  }} </h1>
+    <div class="form">
+        {{ form_start(form) }}
+
+        <div>
+            <p>TYPE DE GIBIER</p>
+            {{ form_widget(form.animal) }}
+        </div>
+        <div >
+            <p>NOMBRE DE CHASSE</p>
+            {{ form_widget(form.nbchasse) }}
+        </div>
+
+        <div >
+            <p>LIEU</p>
+            {{ form_widget(form.lieu) }}
+        </div>
+        <div >
+            <p>DATE</p>
+            {{ form_widget(form.date, { 'attr': {'class': 'calendar'} })}}
+        </div>
+        <div >
+            <p>DESCRIPTION</p>
+            <div class="c">   {{ form_widget(form.description) }}</div>
+        </div>
+
+
+        <button class="btn btn-success" {{ form_widget(form.save) }} </button>
+        <button type="reset" class="btn btn-clear-g">reset</button>
+
+        </p>
+        {{ form_end(form) }}
+
+
+    </div>
+
+{% endblock %}

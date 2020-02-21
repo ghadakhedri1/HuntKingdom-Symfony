@@ -1,0 +1,36 @@
+journale_homepage:
+    path:     /
+    defaults: { _controller: JournaleBundle:Default:index }
+create:
+    path:     /create
+    defaults: { _controller: JournaleBundle:Default:create }
+read:
+    path:     /read
+    defaults: { _controller: JournaleBundle:Default:read}
+MAJ:
+    path:     /MAJ/{id}
+    defaults: { _controller: JournaleBundle:Default:MAJ}
+delete:
+    path:     /delete/{id}
+    defaults: { _controller: JournaleBundle:Default:delete}
+deleteAll:
+    path:     /deleteAll/{id}
+    defaults: { _controller: JournaleBundle:Default:deleteAll}
+liste:
+    path:     /liste
+    defaults: { _controller: JournaleBundle:Default:liste}
+recherche:
+    path: /recherche
+    defaults: { _controller: JournaleBundle:Default:recherche }
+readAll:
+    path: /readAll
+    defaults: { _controller: JournaleBundle:Default:readAll }
+stat:
+    path: /stat
+    defaults: { _controller: JournaleBundle:Default:stat }
+listeuser:
+    path: /listeuser
+    defaults: { _controller: JournaleBundle:Default:listeuser }
+listenbchasse:
+    path: /listenbchasse
+    defaults: { _controller: JournaleBundle:Default:listenbchasse }

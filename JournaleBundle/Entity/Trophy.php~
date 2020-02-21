@@ -1,0 +1,121 @@
+<?php
+
+namespace JournaleBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Trophy
+ *
+ * @ORM\Table(name="trophy")
+ * @ORM\Entity(repositoryClass="JournaleBundle\Repository\TrophyRepository")
+ */
+class Trophy
+{
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="score", type="integer")
+     */
+    private $score;
+
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="niveau", type="string", length=255)
+     */
+    private $niveau;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="Journale")
+     * ORM\JoinColumn(name="journale_id",refrencedColumnName="id")
+     */
+    protected $journale;
+    /**
+     * @ORM\ManyToOne(targetEntity="AppBundle\Entity\User")
+     * ORM\JoinColumn(name="user_id",refrencedColumnName="id")
+     */
+    protected $user;
+    /**
+     * @return mixed
+     */
+    public function getJournale()
+    {
+        return $this->journale;
+    }
+
+    /**
+     * @param mixed $journale
+     */
+    public function setJournale($journale)
+    {
+        $this->journale = $journale;
+    }
+
+    /**
+     * Get id
+     *
+     * @return int
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set score
+     *
+     * @param integer $score
+     *
+     * @return Trophy
+     */
+    public function setScore($score)
+    {
+        $this->score = $score;
+
+        return $this;
+    }
+
+    /**
+     * Get score
+     *
+     * @return int
+     */
+    public function getScore()
+    {
+        return $this->score;
+    }
+
+    /**
+     * Set niveau
+     *
+     * @param string $niveau
+     *
+     * @return Trophy
+     */
+    public function setNiveau($niveau)
+    {
+        $this->niveau = $niveau;
+
+        return $this;
+    }
+
+    /**
+     * Get niveau
+     *
+     * @return string
+     */
+    public function getNiveau()
+    {
+        return $this->niveau;
+    }
+}

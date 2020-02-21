@@ -1,0 +1,38 @@
+{% extends 'baseCompte.html.twig' %}
+{% block head %}
+<style>
+ h1{
+  width: 35%;
+  margin-left:auto;
+  margin-right:auto;
+  background:white;
+  border-radius:5px;
+  position:relative;
+  font-family: 'Libre Franklin';
+ }
+ </style>
+{% endblock %}
+ {% block container %}
+
+<html>
+<head></head>
+<body>
+<center>
+ </br>
+ <h1> statistique de chasse </h1>
+<div id="div_chart"></div>
+
+ <script src="//code.highcharts.com/4.0.1/highcharts.js"></script>
+ <script src="//code.highcharts.com/4.0.1/modules/exporting.js"></script>
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+<script type="text/javascript">
+
+    {{ gc_draw(piechart, 'div_chart') }}
+
+
+    chart_registrations_per_day.setOptions(Highcharts.theme);
+    chart_machines_per_day.setOptions(Highcharts.theme);
+
+</script>
+ {% endblock %}
